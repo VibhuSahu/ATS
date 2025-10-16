@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Resume Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ATS Resume Analyzer</h1>
+        <p>Upload your resume and paste a job description to calculate your ATS match score.</p>
+
+        <form id="resumeForm">
+            <label for="jobDescription">Job Description</label>
+            <textarea id="jobDescription" name="jobDescription" placeholder="Paste job description here..." required></textarea>
+
+            <label for="resumeFile">Upload Resume (PDF)</label>
+            <input type="file" id="resumeFile" name="resumeFile" accept="application/pdf" required>
+
+            <button type="submit">Analyze Resume</button>
+        </form>
+
+        <div id="responseContainer" class="hidden">
+            <h2>Prediction Results</h2>
+            <div class="result">
+                <p><strong>Predicted Category:</strong> <span id="predictedCategory">--</span></p>
+                <p><strong>ATS Match Score:</strong> <span id="atsScore">--</span>%</p>
+                <p><strong>File:</strong> <span id="fileName">--</span></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Powered by FastAPI & Scikit-learn</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
