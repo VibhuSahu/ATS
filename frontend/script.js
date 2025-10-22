@@ -13,7 +13,7 @@ document.getElementById("resumeForm").addEventListener("submit", async function 
     formData.append("job_description", jobDescription);
     formData.append("file", resumeFile);
 
-    const apiUrl = "http://127.0.0.1:8000/analyze";
+    const apiUrl = "https://sturdy-enigma-7xrqx9gjx6v2w7q-8000.app.github.dev/analyze";
 
     try {
         const response = await fetch(apiUrl, {

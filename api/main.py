@@ -1,18 +1,37 @@
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from PyPDF2 import PdfReader
 import joblib
 import re
 import io
+from pathlib import Path
 
 # Load trained model and vectorizer
-model = joblib.load("model/model.pkl")
-vectorizer = joblib.load("model/vectorizer.pkl")
+BASE_DIR = Path(__file__).resolve().parent.parent  # project root /workspaces/ATS
+MODEL_DIR = BASE_DIR / "model"
+MODEL_PATH = MODEL_DIR / "model.pkl"
+VECTORIZER_PATH = MODEL_DIR / "vectorizer.pkl"
+
+if not MODEL_PATH.exists() or not VECTORIZER_PATH.exists():
+    raise FileNotFoundError(f"Model files not found at: {MODEL_PATH} , {VECTORIZER_PATH}")
+
+model = joblib.load(MODEL_PATH)
+vectorizer = joblib.load(VECTORIZER_PATH)
 
 app = FastAPI(
     title="ATS Resume Analyzer API",
     description="Analyze resumes, predict career domain, and compute ATS job match score.",
     version="1.0.0"
+)
+
+# Allow CORS for your frontend host(s). Replace with specific origins in production.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or ["https://sturdy-enigma-7xrqx9gjx6v2w7q-5500.app.github.dev"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Resume text extraction
