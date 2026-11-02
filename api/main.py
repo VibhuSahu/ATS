@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from PyPDF2 import PdfReader
 import joblib
 import re
@@ -12,6 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent  # project root /workspaces/AT
 MODEL_DIR = BASE_DIR / "model"
 MODEL_PATH = MODEL_DIR / "model.pkl"
 VECTORIZER_PATH = MODEL_DIR / "vectorizer.pkl"
+FRONTEND_DIR = BASE_DIR / "frontend"
 
 if not MODEL_PATH.exists() or not VECTORIZER_PATH.exists():
     raise FileNotFoundError(f"Model files not found at: {MODEL_PATH} , {VECTORIZER_PATH}")
@@ -85,6 +87,8 @@ async def analyze_resume(job_description: str = Form(...), file: UploadFile = Fi
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": str(e)})
 
-@app.get("/")
-async def root():
-    return {"message": "ATS Resume Analyzer API is running."}
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
+
+app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
