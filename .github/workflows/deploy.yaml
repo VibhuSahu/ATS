@@ -32,8 +32,19 @@ jobs:
             docker compose up -d --build --remove-orphans
 
             echo "Deploying landing page..."
-            rsync -av --delete \
-              /opt/ATS/ats-landingpage/ \
+
+            mkdir -p /var/www/ats-landingpage
+
+            find /var/www/ats-landingpage \
+              -mindepth 1 -maxdepth 1 \
+              -exec rm -rf -- {} +
+
+            cp -a /opt/ATS/ats-landingpage/. \
               /var/www/ats-landingpage/
 
-            echo "Deployment completed successfully!"
+            echo "Landing page deployment completed!"
+
+            echo "Checking landing page..."
+            test -f /var/www/ats-landingpage/index.html
+
+            echo "ATS deployment completed successfully!"
