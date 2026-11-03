@@ -30,26 +30,10 @@ jobs:
             cd /opt/ATS
             git pull --ff-only origin main
             docker compose up -d --build --remove-orphans
-            
-            echo "Creating landing page directory..."
-            sudo mkdir -p /var/www/ats-landingpage
 
             echo "Deploying landing page..."
-            sudo rsync -av --delete \
+            rsync -av --delete \
               /opt/ATS/ats-landingpage/ \
               /var/www/ats-landingpage/
-
-            echo "Setting permissions..."
-            sudo chown -R deploy:www-data \
-              /var/www/ats-landingpage
-
-            sudo chmod -R 755 \
-              /var/www/ats-landingpage
-
-            echo "Testing Nginx..."
-            sudo nginx -t
-
-            echo "Reloading Nginx..."
-            sudo systemctl reload nginx
 
             echo "Deployment completed successfully!"
