@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ATS Resume Analyzer</title>
+  <meta name="description" content="Upload your PDF resume, paste a job description, and get an instant ATS match score.">
+  <link rel="icon" href="assets/logo-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a href="#top" class="brand">
+        <img src="assets/logo-icon.png" alt="ATS logo" class="brand-logo">
+        <span class="brand-name">ATS <span>Resume Analyzer</span></span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#problem">Problem</a>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#stack">Tech stack</a>
+        <a href="#team">Team</a>
+      </div>
+      <a class="btn btn-primary nav-cta" href="https://ats.narwhalsofficial.com">Live Demo</a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="top" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="pill"><span class="dot"></span>Open source · MIT license</span>
+          <h1>See your resume the way an ATS does.</h1>
+          <p class="lead">Upload your PDF resume, paste a job description, and get an instant ATS match score.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary btn-lg" href="https://ats.narwhalsofficial.com">
+              Live Demo
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn-secondary btn-lg" href="https://github.com/VibhuSahu/ATS">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+              GitHub Repository
+            </a>
+            <a class="btn btn-secondary btn-lg" href="https://github.com/VibhuSahu/ATS#readme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>
+              Documentation
+            </a>
+          </div>
+        </div>
+        <figure class="hero-shot">
+          <div class="shot-frame">
+            <img src="assets/app-demo.png" alt="The ATS Resume Analyzer app: a job description box, a PDF resume upload field and an Analyze Resume button">
+          </div>
+          <figcaption>The live app at ats.narwhalsofficial.com</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container stack-40">
+        <div class="section-head">
+          <span class="eyebrow">About</span>
+          <h2>A clear look at how your resume matches a job.</h2>
+        </div>
+        <div class="grid grid-2">
+          <article class="card card-tint card-lg">
+            <h3>What is this project?</h3>
+            <p>ATS Resume Analyzer is a web app that scores how well a resume matches a job description. You paste the job description, upload your resume as a PDF, and get back an ATS match score. It runs on a FastAPI backend with a scikit-learn model.</p>
+          </article>
+          <article class="card card-tint card-lg">
+            <h3>Why was it developed?</h3>
+            <p>Most applicants send a resume without ever knowing how an automated screening system will read it. This project was built to open up that black box: a simple, free way to check a resume against a real job description before you apply.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section id="problem" class="section section-tint">
+      <div class="container stack-40">
+        <div class="section-head wide">
+          <span class="eyebrow">The problem</span>
+          <h2>What problem does it solve?</h2>
+          <p class="lead-sm">Applicants submit resumes into automated screening and hear nothing back. They can't see what the system looked for, so they can't fix what is missing. ATS gives that feedback before you hit submit.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <article class="card card-white">
+            <h3>Existing problems and limitations</h3>
+            <ul>
+              <li>Applicant tracking systems filter resumes automatically, and applicants get no view of the score.</li>
+              <li>Rejections come with no explanation, or never come at all.</li>
+              <li>How a resume is scored stays hidden inside recruiter software.</li>
+            </ul>
+          </article>
+          <article class="card card-white">
+            <h3>Challenges faced by users</h3>
+            <ul>
+              <li>Not knowing which parts of a job description really matter.</li>
+              <li>Rewriting a resume by guesswork for every single application.</li>
+              <li>No quick way to compare a resume with a specific role.</li>
+            </ul>
+          </article>
+          <article class="card card-white">
+            <h3>Why existing solutions fall short</h3>
+            <ul>
+              <li>Generic resume tips ignore the job description in front of you.</li>
+              <li>Some checkers put results behind sign-ups or payment.</li>
+              <li>Closed tools give no way to see or improve how the score is made.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="solution-panel">
+          <h3>How ATS addresses these challenges</h3>
+          <div class="grid grid-3 gap-32">
+            <div>
+              <h4>Built around your target role</h4>
+              <p>Your resume is scored against the exact job description you paste, not a generic checklist.</p>
+            </div>
+            <div>
+              <h4>One page, one upload, one score</h4>
+              <p>No account and no setup. Add the two inputs and read the result.</p>
+            </div>
+            <div>
+              <h4>Open for anyone to inspect</h4>
+              <p>The code, model and deployment setup are public under the MIT license.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- USERS -->
+    <section id="users" class="section">
+      <div class="container stack-40">
+        <div class="section-head">
+          <span class="eyebrow">Audience</span>
+          <h2>Who are the target users?</h2>
+        </div>
+        <div class="grid grid-4">
+          <article class="card card-outline">
+            <span class="dot"></span>
+            <h3>Job seekers and students</h3>
+            <p>Anyone about to apply who wants to know how a resume stacks up against a posting.</p>
+          </article>
+          <article class="card card-outline">
+            <span class="dot"></span>
+            <h3>Career changers</h3>
+            <p>People moving into a new field who need to see how their experience reads for a new role.</p>
+          </article>
+          <article class="card card-outline">
+            <span class="dot"></span>
+            <h3>Mentors and placement cells</h3>
+            <p>Teams who review many resumes and want a quick, consistent first check.</p>
+          </article>
+          <article class="card card-outline">
+            <span class="dot"></span>
+            <h3>Developers and ML learners</h3>
+            <p>Builders who want a small, readable FastAPI and scikit-learn project to study or extend.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFFERENT -->
+    <section id="different" class="section section-dark">
+      <div class="container stack-40">
+        <div class="section-head">
+          <span class="eyebrow eyebrow-amber">Why ATS</span>
+          <h2>What makes it different?</h2>
+        </div>
+        <div class="grid grid-4 gap-32">
+          <div class="diff">
+            <h3>Matched to the job</h3>
+            <p>The score comes from your resume and the specific job description, not a one-size-fits-all rubric.</p>
+          </div>
+          <div class="diff">
+            <h3>Free and open source</h3>
+            <p>MIT licensed. Read the code, fork it, or improve the model.</p>
+          </div>
+          <div class="diff">
+            <h3>Lightweight machine learning</h3>
+            <p>A compact scikit-learn model and vectorizer keep the app small and quick to run.</p>
+          </div>
+          <div class="diff">
+            <h3>Easy to self-host</h3>
+            <p>Docker and Compose are included, so the whole app starts with a single command.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="section">
+      <div class="container stack-40">
+        <div class="section-head">
+          <span class="eyebrow">Features</span>
+          <h2>Everything you need to check a resume.</h2>
+        </div>
+        <div class="grid grid-3">
+          <article class="card card-tint">
+            <div class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 17v-6"/><path d="m9.5 13.5 2.5-2.5 2.5 2.5"/></svg></div>
+            <h3>PDF resume upload</h3>
+            <p>Drop in your resume as a PDF and the app reads the text for you.</p>
+          </article>
+          <article class="card card-tint">
+            <div class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h10"/></svg></div>
+            <h3>Paste any job description</h3>
+            <p>Works with any posting you copy in, for any role or industry.</p>
+          </article>
+          <article class="card card-tint">
+            <div class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div>
+            <h3>ATS match score</h3>
+            <p>A single score that tells you how closely your resume fits the posting.</p>
+          </article>
+          <article class="card card-tint">
+            <div class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+            <h3>Fast FastAPI backend</h3>
+            <p>A lightweight Python API serves the model, so results come back quickly.</p>
+          </article>
+          <article class="card card-tint">
+            <div class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/></svg></div>
+            <h3>One-command Docker deploy</h3>
+            <p>The frontend and API ship in one image and start with Docker Compose.</p>
+          </article>
+          <article class="card card-tint">
+            <div class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.2"/><path d="M3 12A9 9 0 0 1 18.5 5.8"/><path d="M18 2v4h-4"/><path d="M6 22v-4h4"/></svg></div>
+            <h3>Automated deployment</h3>
+            <p>A GitHub Actions workflow redeploys the app to a VPS on every push to main.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section section-tint">
+      <div class="container stack-40">
+        <div class="section-head">
+          <span class="eyebrow">How it works</span>
+          <h2>From resume to score in four steps.</h2>
+        </div>
+        <div class="grid grid-4">
+          <article class="card card-white">
+            <div class="step">1</div>
+            <h3>Paste the job description</h3>
+            <p>Copy the posting you are applying to into the text box.</p>
+          </article>
+          <article class="card card-white">
+            <div class="step">2</div>
+            <h3>Upload your PDF resume</h3>
+            <p>Choose your resume file and press Analyze Resume.</p>
+          </article>
+          <article class="card card-white">
+            <div class="step">3</div>
+            <h3>The API analyzes both texts</h3>
+            <p>The FastAPI backend reads the PDF and compares it with the job description using the trained model and vectorizer.</p>
+          </article>
+          <article class="card card-white">
+            <div class="step">4</div>
+            <h3>Get your ATS match score</h3>
+            <p>See how well your resume fits, then adjust it before you apply.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section id="stack" class="section">
+      <div class="container stack-40">
+        <div class="section-head">
+          <span class="eyebrow">Technology stack</span>
+          <h2>Built with simple, proven tools.</h2>
+        </div>
+        <div class="grid grid-5">
+          <article class="card card-outline card-sm">
+            <h3>Backend</h3>
+            <div class="chips"><span>FastAPI</span><span>Python</span></div>
+          </article>
+          <article class="card card-outline card-sm">
+            <h3>Machine learning</h3>
+            <div class="chips"><span>scikit-learn</span><span>Trained model</span><span>Text vectorizer</span></div>
+          </article>
+          <article class="card card-outline card-sm">
+            <h3>Frontend</h3>
+            <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          </article>
+          <article class="card card-outline card-sm">
+            <h3>Data</h3>
+            <div class="chips"><span>Resume dataset (CSV)</span></div>
+          </article>
+          <article class="card card-outline card-sm">
+            <h3>DevOps</h3>
+            <div class="chips"><span>Docker</span><span>Docker Compose</span><span>GitHub Actions</span><span>VPS</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" class="section section-tint">
+      <div class="container stack-40">
+        <div class="section-head">
+          <span class="eyebrow">Team and contributors</span>
+          <h2>The people behind ATS.</h2>
+        </div>
+        <div class="grid grid-2">
+          <article class="card card-white person">
+            <div class="avatar">VS</div>
+            <div>
+              <h3>Vibhu Sahu</h3>
+              <p>Deployment and Maintainer</p>
+              <a href="https://github.com/VibhuSahu" class="link-strong">github.com/VibhuSahu</a>
+            </div>
+          </article>
+          <article class="card card-white person">
+            <div class="avatar">KM</div>
+            <div>
+              <h3>Kunal Meshram</h3>
+              <p>UI/UX and Frontend</p>
+              <a href="https://github.com/KunalMeshRam0" class="link-strong">github.com/KunalMeshRam0</a>
+            </div>
+          </article>
+          <article class="card card-white person">
+            <div class="avatar">AT</div>
+            <div>
+              <h3>Anshita Tripathi</h3>
+              <p>Backend and ML</p>
+              <a href="https://github.com/Anshita6" class="link-strong">github.com/Anshita6</a>
+            </div>
+          </article>
+          <article class="card card-white card-dashed">
+            <h3>Contributions are welcome</h3>
+            <p>Found a bug or have an idea for a better score? Open an issue or send a pull request on GitHub.</p>
+            <a href="https://github.com/VibhuSahu/ATS/issues" class="link-strong">Open an issue</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <h2>Check your resume against a real job description.</h2>
+          <p>It takes under a minute and needs no account.</p>
+          <a class="btn btn-primary btn-lg" href="https://ats.narwhalsofficial.com">
+            Open the Live Demo
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo-icon.png" alt="ATS logo">
+        <span>© <span id="year">2026</span> Vibhu Sahu · MIT License</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://ats.narwhalsofficial.com">Live Demo</a>
+        <a href="https://github.com/VibhuSahu/ATS">GitHub</a>
+        <a href="https://github.com/VibhuSahu/ATS#readme">Documentation</a>
+        <a href="https://github.com/VibhuSahu/ATS/blob/main/LICENSE">License</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
